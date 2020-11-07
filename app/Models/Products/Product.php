@@ -1,9 +1,11 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Models\Products;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Product extends Model
@@ -15,8 +17,12 @@ class Product extends Model
         return $this->belongsTo('App\Models\Products\Image', 'image_id');
     }
 
-    public function warehouses()
+    /**
+     * relationship with only active warehouse
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function warehouses(): BelongsToMany
     {
-        return $this->hasMany('App\Models\Products\Warehouse');
+        return $this->belongsToMany(Warehouse::class)->where('active', true);
     }
 }
