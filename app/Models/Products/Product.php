@@ -23,6 +23,6 @@ class Product extends Model
      */
     public function warehouses(): BelongsToMany
     {
-        return $this->belongsToMany(Warehouse::class)->where('active', true);
+        return $this->belongsToMany(Warehouse::class)->where('warehouses.active', true);
     }
 }
