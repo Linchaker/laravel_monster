@@ -21,15 +21,13 @@ class CreateWarehousesTable extends Migration
             $table->boolean('active')->default(true);
         });
 
-        Schema::create('warehouse_product', function (Blueprint $table) {
+        Schema::create('product_warehouse', function (Blueprint $table) {
 
             $table->unsignedBigInteger('warehouse_id');
             $table->foreign('warehouse_id')->references('id')->on('warehouses');
 
             $table->unsignedBigInteger('product_id');
             $table->foreign('product_id')->references('id')->on('products');
-
-            $table->timestamps();
         });
     }
 

@@ -21,6 +21,7 @@ class CreateProductsTable extends Migration
             $table->unsignedBigInteger('image_id')->nullable();
             $table->timestamps();
             $table->softDeletes();
+            $table->boolean('active')->default(true);
 
             $table->foreign('image_id')->references('id')->on('images');
         });
