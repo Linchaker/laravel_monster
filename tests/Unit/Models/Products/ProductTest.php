@@ -36,7 +36,7 @@ class ProductTest extends TestCase
     public function testProductBelongsToManyWarehouses()
     {
         $products = Product::factory()->make();
-        $warehouses = Warehouse::factory()->make();
+        Warehouse::factory()->make();
 
         $this->assertInstanceOf('Illuminate\Database\Eloquent\Collection', $products->warehouses);
     }
