@@ -59,14 +59,14 @@ services:
 
   composer:
     image: composer:latest
+    environment:
+      - COMPOSER_MEMORY_LIMIT=-1
     volumes:
       - ./:/var/www
     working_dir: /var/www
-    command: composer install
 
   node:
     image: node:latest
     volumes:
       - ./:/var/www
     working_dir: /var/www
-    command: npm install
