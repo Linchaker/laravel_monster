@@ -1,21 +1,26 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Http\Controllers\Admin;
 
+use App\DataTables\ProductsDataTable;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return View
      */
-    public function index()
+
+    public function index(ProductsDataTable $dataTable)
     {
-        //
+        return $dataTable->render('admin.products.index');
     }
+
 
     /**
      * Show the form for creating a new resource.
