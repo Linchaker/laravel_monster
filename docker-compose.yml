@@ -11,7 +11,8 @@ services:
   php-cli:
     build:
       context: ./docker/php-cli
-
+    volumes:
+      - "./:/var/www"
 
   nginx:
     build:
@@ -30,7 +31,6 @@ services:
 
   mysql:
     image: mysql:latest
-    container_name: mysql
     restart: always
     environment:
       - MYSQL_DATABASE=docker
@@ -43,7 +43,6 @@ services:
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
-    container_name: phpmyadmin
     environment:
      - PMA_ARBITRARY=1
     restart: always
@@ -60,14 +59,14 @@ services:
 
   composer:
     image: composer:latest
+    environment:
+      - COMPOSER_MEMORY_LIMIT=-1
     volumes:
       - ./:/var/www
     working_dir: /var/www
-    command: composer install
 
   node:
     image: node:latest
     volumes:
       - ./:/var/www
     working_dir: /var/www
-    command: npm install
