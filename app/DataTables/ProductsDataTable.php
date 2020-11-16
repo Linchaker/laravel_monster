@@ -12,6 +12,9 @@ use Yajra\DataTables\Services\DataTable;
 
 class ProductsDataTable extends DataTable
 {
+    protected $excludeFromExport = [
+        'image.url',
+    ];
     /**
      * Build DataTable class.
      *
