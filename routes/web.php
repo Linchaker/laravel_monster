@@ -25,3 +25,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 Route::resource('/admin/products', Admin\ProductController::class);
+
+Route::get('/event', TestEventsController::class);
