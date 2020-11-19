@@ -27,3 +27,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::resource('/admin/products', Admin\ProductController::class);
 
 Route::get('/event', TestEventsController::class);
+
+Route::get('/push', TestSimplePusherPublicChannelController::class)->middleware('auth.basic');

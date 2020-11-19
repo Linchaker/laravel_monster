@@ -29,13 +29,38 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
  * allows your team to easily build robust real-time web applications.
  */
 
-// import Echo from 'laravel-echo';
+import Echo from 'laravel-echo';
 
-// window.Pusher = require('pusher-js');
+window.Pusher = require('pusher-js');
 
+window.Echo = new Echo({
+    broadcaster: 'pusher',
+    key: '3e6addbbc08426d577d2',
+    cluster: 'eu',
+    // enabledTransports: ['ws', 'wss'],
+    // forceTLS: true,
+    // logToConsole: true
+});
+
+
+// // Initiate the Pusher JS library
+// var pusher = new Pusher('3e6addbbc08426d577d2', {
+//     encrypted: true,
+//     cluster: 'eu',
+// });
+//
+// // Subscribe to the channel we specified in our Laravel Event
+// var channel = pusher.subscribe('dropped-five');
+//
+// // Bind a function to a Event (the full Laravel class)
+// channel.bind('App\\Events\\SimplePusherPublicChannel', function(data) {
+//     // this is called when the event notification is received...
+//     console.log('// this is called when the event notification is received...');
+// });
+
+// import Echo from "laravel-echo"
+//
 // window.Echo = new Echo({
-//     broadcaster: 'pusher',
-//     key: process.env.MIX_PUSHER_APP_KEY,
-//     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
-//     forceTLS: true
+//     broadcaster: 'log',
+//     key: 'your-pusher-channels-key'
 // });

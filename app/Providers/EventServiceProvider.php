@@ -21,6 +21,9 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\NumberThreeDropped' => [
             'App\Listeners\SendNumberThreeNotification',
         ],
+        'App\Events\SimplePusherPublicChannel' => [
+            'App\Listeners\SimplePusherPublicChannelListener',
+        ]
     ];
 
     /**
