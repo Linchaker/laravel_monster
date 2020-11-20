@@ -18,3 +18,12 @@ use Illuminate\Support\Facades\Route;
  * products api
  */
 Route::apiResource('/products', 'Api\v1\ProductController')->only('index');
+
+Route::namespace('api\v1')->group(function() {
+    Route::post('register', 'AuthController@register');
+    Route::post('token', 'AuthController@token');
+});
+
+Route::middleware('auth:sanctum')->get('/name', function (Request $request) {
+    return response()->json(['name' => $request->user()->name]);
+});
