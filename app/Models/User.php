@@ -3,10 +3,12 @@
 namespace App\Models;
 
 use App\Models\Products\Product;
+use App\Notifications\TestNotification;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Notification;
 
 class User extends Authenticatable
 {
@@ -45,5 +47,13 @@ class User extends Authenticatable
     public function products()
     {
         return $this->hasMany(Product::class);
+    }
+
+    public function getUsersWithNotif()
+    {
+        $users = User::all();
+        //$this->notify(new TestNotification());
+        Notification::send($users, new TestNotification());
+        return $users;
     }
 }

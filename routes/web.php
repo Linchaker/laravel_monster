@@ -30,3 +30,4 @@ Route::get('/event', TestEventsController::class);
 
 Route::get('/push', TestSimplePusherPublicChannelController::class)->middleware('auth.basic');
 Route::get('/push_private', TestSimplePusherPrivateChannelController::class)->middleware('auth.basic');
+Route::get('/notif', [App\Http\Controllers\TestNotificationController::class, 'index'])->middleware('auth.basic');
