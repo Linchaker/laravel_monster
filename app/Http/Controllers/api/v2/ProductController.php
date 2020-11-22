@@ -22,8 +22,8 @@ class ProductController extends APIController
      *       ),
      *       @OA\Response(response=400, description="Bad request"),
      *       security={
-     *           {"api_key_security_example": {}}
-     *       }
+     *           {"Authorization": {}}
+     *      }
      *     )
      *
      * Returns list of products

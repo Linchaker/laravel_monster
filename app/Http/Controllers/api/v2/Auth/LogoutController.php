@@ -8,6 +8,23 @@ use Illuminate\Support\Facades\Auth;
 
 class LogoutController extends Controller
 {
+    /**
+     * @OA\Get(
+     *      path="/auth/logout",
+     *      operationId="v2_logout",
+     *      tags={"Auth"},
+     *      summary="Logout",
+     *      description="Returns nothing",
+     *      @OA\Response(response=204, description="successful operation"),
+     *      @OA\Response(response=500, description="Server errors"),
+     *      security={
+     *           {"Authorization": {}}
+     *      }
+     * )
+     * Logout / delete token
+     * @param LogoutRequest $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function logout(LogoutRequest $request)
     {
         try {

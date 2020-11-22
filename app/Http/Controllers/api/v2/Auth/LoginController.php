@@ -10,6 +10,21 @@ use Illuminate\Support\Facades\Hash;
 class LoginController extends Controller
 {
     /**
+     * @OA\Post(
+     *      path="/auth/login",
+     *      operationId="v2_login",
+     *      tags={"Auth"},
+     *      summary="Login",
+     *      description="Returns token",
+     *      @OA\Response(response=200, description="successful auth"),
+     *      @OA\Response(response=401, description="Unauthorized"),
+     *      @OA\Response(response=422, description="Validation errors"),
+     *      @OA\RequestBody(
+     *         required=true,
+     *         @OA\JsonContent(ref="#/components/schemas/LoginRequest")
+     *     ),
+     *
+     *     )
      * Handle the incoming request.
      *
      * @param LoginRequest $request

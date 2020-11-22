@@ -10,6 +10,19 @@ use Illuminate\Support\Facades\Hash;
 class RegisterController extends Controller
 {
     /**
+     * @OA\Post(
+     *      path="/auth/register",
+     *      operationId="v2_register",
+     *      tags={"Auth"},
+     *      summary="Registration",
+     *      description="Returns token",
+     *      @OA\Response(response=200, description="successful operation"),
+     *      @OA\Response(response=422, description="Validation errors"),
+     *      @OA\RequestBody(
+     *         required=true,
+     *         @OA\JsonContent(ref="#/components/schemas/RegisterRequest")
+     *     ),
+     * )
      * Handle the incoming request.
      *
      * @param RegisterRequest $request
