@@ -12,6 +12,13 @@ class Product extends Model
 {
     use HasFactory, SoftDeletes;
 
+    protected $fillable = [
+        'code',
+        'name',
+        'price',
+        'image_id',
+    ];
+
     public function image()
     {
         return $this->belongsTo('App\Models\Products\Image', 'image_id');
