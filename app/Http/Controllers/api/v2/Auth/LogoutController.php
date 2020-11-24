@@ -4,7 +4,6 @@ namespace App\Http\Controllers\api\v2\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\API\LogoutRequest;
-use Illuminate\Support\Facades\Auth;
 
 class LogoutController extends Controller
 {
@@ -15,7 +14,7 @@ class LogoutController extends Controller
      *      tags={"Auth"},
      *      summary="Logout",
      *      description="Returns nothing",
-     *      @OA\Response(response=204, description="successful operation"),
+     *      @OA\Response(response=204, description="Successful operation"),
      *      @OA\Response(response=500, description="Server errors"),
      *      security={
      *           {"Authorization": {}}
@@ -28,8 +27,8 @@ class LogoutController extends Controller
     public function logout(LogoutRequest $request)
     {
         try {
-            if (Auth::check()) {
-                Auth::user()->currentAccessToken()->delete();
+            if (auth('sanctum')->check()) {
+                auth('sanctum')->user()->currentAccessToken()->delete();
             }
             return response()->json('', 204);
 

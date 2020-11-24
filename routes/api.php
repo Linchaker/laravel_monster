@@ -41,17 +41,23 @@ Route::prefix('v2')->group(function () {
         Route::post('/register', 'api\v2\Auth\RegisterController@register')->name('v2_register');
         Route::post('/login', 'api\v2\Auth\LoginController@login')->name('v2_login');
         Route::get('/logout', 'api\v2\Auth\LogoutController@logout')->name('v2_logout');
+
+        Route::get('/social/{provider}', 'api\v2\Auth\SocialController@redirectToProvider')->name('v2_social_auth');
+        Route::get('/social/{provider}/callback', 'api\v2\Auth\SocialController@handleProviderCallback')->name('v2_social_auth.callback');
     });
 
 
 
     /**
-     * Only authenticated /// 4|Z0PIcwuy9hnkhGYrbf1MR0m3DHLvAiJGSLJSmmRt
+     * Only authenticated
      */
 
     Route::middleware('auth:sanctum')->group(function() {
 
         Route::apiResource('/products', 'api\v2\ProductController')->names('v2_products');
+        Route::get('/user', function (Request $request) {
+            return response()->json(['email' => $request->user()->email]);
+        })->name('v2_user_data');
     });
 
 

@@ -26,8 +26,10 @@ class DatabaseSeeder extends Seeder
             ))
             ->hasAttached(
                 Product::factory()->count(10),
-                // seed pivot tabel additional field
-                fn() => ['active' => mt_rand(0,2) > 0]
+                // seed pivot table additional field
+                function () {
+                    return ['active' => mt_rand(0,2) > 0];
+                }
             )
             ->create()
 
